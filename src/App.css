@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar{
+    width: 10px;
+    background-color: grey;
+}
+
+a{
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.App{
+    background-image: url('https://wallpaperaccess.com/full/1963258.png');
+    background-repeat: no-repeat; 
+    min-height: 100vh;
+    background-position: center;
+}

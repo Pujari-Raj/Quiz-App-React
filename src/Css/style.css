@@ -1,0 +1,83 @@
+/*Header-File*/
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header_title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4vw;
+    cursor: pointer;
+    color: #393E46;
+}
+
+.divider {
+    margin: 10px;
+    width: 100%;
+    background-color: #434242;
+}
+
+/*Footer*/
+
+.footer_block{
+    text-align: center;
+    padding: 5px 0;
+    font-size: 1.4vw;
+    color: #393E46;
+}
+
+/*Home Page*/
+
+.content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.settings_title{
+    font-size: 28px;
+    color: #14161b;
+}
+
+.settings {
+    width: 55%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings_select{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    flex: 1%;
+    justify-content: space-evenly;
+}
+
+.banner {
+    width: 60%;
+    align-self: center;
+    padding: 8px;
+}
+
+/*Media Queries*/
+
+@media (max-width: 800px) {
+    .content{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .banner{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .settings{
+        width: 100%;
+    }
+}
