@@ -1,3 +1,4 @@
+// Creating categories & giving its value
 const Categories = [
     { category: "General Knowledge",value: 9,},
     { category: "Books", value: 10 },
@@ -23,6 +24,6 @@ const Categories = [
     { category: "Gadgets", value: 30 },
     { category: "Japanese Anime", value: 31 },
     { category: "Cartoon and Animations", value: 32 },
-  ];
+];
   
-  export default Categories;
+export default Categories;

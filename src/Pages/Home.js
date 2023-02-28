@@ -5,7 +5,7 @@ import "../Css/style.css";
 import Categories from "../Data/Categories";
 import ErrorMessage from "../Components/ErrorMessage";
 
-const Home = ({ name, setName, fetchQuestions }) => {
+const Home = ({ name, setName, fetchQuestions}) => {
   //states
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
