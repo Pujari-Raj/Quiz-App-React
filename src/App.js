@@ -32,8 +32,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/"
-            exact
+            path="/" exact
             element={
               <Home
                 name={name}
@@ -43,8 +42,7 @@ function App() {
             }
           ></Route>
           <Route
-            path="/quiz"
-            exact
+            path="/quiz" exact
             element={
               <Quiz
                 name={name}
@@ -57,8 +55,7 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/result"
-            exact
+          <Route path="/result" exact
             element={<Result name={name} score={score} />}
           ></Route>
 

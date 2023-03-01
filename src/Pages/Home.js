@@ -13,6 +13,7 @@ const Home = ({ name, setName, fetchQuestions}) => {
 
   const navigate = useNavigate();
 
+  // checking if all the values has been entered in input fields
   const handleSubmit = () => {
     if (!category || !difficulty || !name) {
       setError(true);
@@ -78,7 +79,9 @@ const Home = ({ name, setName, fetchQuestions}) => {
       </div>
 
       <img src="./home_banner.svg" alt="banner_img" className="banner" />
+      
     </div>
+    
   );
 };
 

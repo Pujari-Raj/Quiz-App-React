@@ -1,4 +1,5 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, LinearProgress} from '@mui/material';
+import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react'
 import Question from '../Components/Question';
 
@@ -59,7 +60,7 @@ const Quiz = ({name,
        </> 
       ):(
         <CircularProgress style={{margin: 100}}
-        color="inherit"
+        color="success"
         size={150}
         thickness={1}>
         </CircularProgress>
