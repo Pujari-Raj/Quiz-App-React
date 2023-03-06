@@ -15,7 +15,7 @@ const Result = ({name, score}) => {
 
   return (
     <div className='result'> 
-      <span className='result_title'>Final Score: {score}</span>
+      <span className='result_title'>Final Score: {score} / 10</span>
       <Button
       variant='outlined'
       color='secondary'
