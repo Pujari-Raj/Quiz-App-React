@@ -19,6 +19,7 @@ const Home = ({ name, setName, fetchQuestions}) => {
       setError(true);
       return;
     }
+    
     else{
       setError(false);
       fetchQuestions(category, difficulty);

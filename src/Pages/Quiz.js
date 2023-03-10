@@ -1,5 +1,4 @@
-import { CircularProgress, LinearProgress} from '@mui/material';
-import { Box } from '@mui/system';
+import { CircularProgress} from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Question from '../Components/Question';
 
@@ -26,7 +25,7 @@ const Quiz = ({name,
   }, [questions, currQues]); 
   /* Passing (questions, currQues) questions (bcz we have to roll new question on click)
      currQues (bcz we have to roll new Options on every new question)*/
-  console.log(options);
+  // console.log(options);
 
   // reshuffling the options of the questions 
   const handleShuffle = (Options) => {
@@ -40,11 +39,11 @@ const Quiz = ({name,
       {questions?(
        <>
         <div className='quizInfo'>
-          <span>{questions[currQues].category}</span>
+          <span>Category: {questions[currQues].category}</span>
           <span>Score: {score}</span>
         </div>
 
-        {/*Passing all the value to quiz page */}
+        {/*Passing all the value to Question Component */}
         <Question
         currQues={currQues}
         setCurrQues={setCurrQues}

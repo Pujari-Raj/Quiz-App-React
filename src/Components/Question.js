@@ -14,29 +14,40 @@ const Question = ({
     correctanswer,
     score,
     setScore,
-    setQuestions,
     noofquestions,
-    setNoofquestions,
+    // setNoofquestions,
 }) => {
 
     //states
     const [show, setShow] = useState(false); // state for modal
     const [selected, setSelected] = useState(); //for selectedAnswer
 
+    const[notselected, setNotSelected] = useState();
+    const[answerselected, setAnswerselected] = useState({});
+
     // if user doesn't select any option , then throw error
     const [error, setError] = useState(false);  // state for error
     const navigate = useNavigate(); //state for navigating
 
-    console.log(noofquestions);
+    // console.log(noofquestions);
 
     //function for changing buttons of colors on basis of answer& conditions
-    const handleSelect = (i) => {
-        if (selected ===i && selected === correctanswer) {
+    const handleSelect = (i) => {  
+        //
+        // let data = questions;
+        // data[currQues] = { ...data[currQues], selected:i };
+        // setQuestions(data);
+        // console.log(setQuestions(data));
+
+        // cdtn for right answer
+        if (selected === i && selected === correctanswer) {
             return "select";   
         }
+        // cdtn for wrong answer
         else if (selected === i && selected !== correctanswer) {
             return "wrong";
         }
+        // cdtn if, user select wrong answer, then Display right answer
         else if (i === correctanswer) {
             return "select";
         }
@@ -45,24 +56,48 @@ const Question = ({
     //checking the answer of question
     const handleCheck = (i) => {
         setSelected(i);
+      
         if (i === correctanswer) {
             setScore(score+1);
         }
-        setError(false);
+        // setError(false);
     };
+
+    // function for submit btn(submitting quiz)
+    const handleSubmit = () => {
+        navigate('/result');
+    }
+
+    // function for Previous Question
+    const handlePrevious= () => {
+        if(notselected){
+            console.log('Previous called, decrementing question!!!', currQues);
+            setCurrQues(currQues-1);
+        }
+    }
 
     // Function for next question button
     const handleNext = () => {
-        if (currQues > 8) {
-            navigate('/result');
-        }
-        else if (selected) {
+
+        if (selected) {  
+            console.log('qstn attempted,forwarding to next qstn', currQues);
             setCurrQues(currQues+1);
-            setSelected();
+            setSelected(true);
+           
+            setSelected(false);
         }
+        
         else{
-            setError('Please Select Option Before Going to Next Question');
+            console.log('qstn not-attempted, forwarding to next-qstn', currQues);
+            setCurrQues(currQues+1);
+            // setSelected(false);
+            setSelected();
+
+            setNotSelected(true);
         }
+        // else{
+        //     setError('Please Select Option Before Going to Next Question');
+        // }
     };
 
     // Displaying Modal on clicking of quit btn
@@ -88,7 +123,7 @@ const Question = ({
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Are You Sure</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -103,9 +138,13 @@ const Question = ({
           <Button variant="outlined" onClick={handleModal}>No</Button>
         </Modal.Footer>
       </Modal>
-        <h1>Question: {currQues + 1} / {noofquestions}</h1>
+        {/* <h1>Question: {currQues + 1} / {noofquestions}</h1> */}
 
         <div className='singleQuestion'>
+            <div>
+            <h1>Question: {currQues + 1} / {noofquestions}</h1>
+
+            </div>
             <h2>{questions[currQues].question}</h2>
 
             {/* Displaying answers of questions */}
@@ -126,20 +165,36 @@ const Question = ({
             <div className='controls'>
                 <Button
                 variant='contained'
-                color='secondary'
+                color='primary'
                 size='large'
-                style={{width: 185}}
-                onClick={handleQuit}>
-                    Quit
+                disabled={currQues===0}
+                onClick={handlePrevious}>
+                    Previous Question
                 </Button>
 
                 <Button
                 variant='contained'
                 color='primary'
                 size='large'
-                style={{width: 185}}
+                disabled={currQues===9}
                 onClick={handleNext}>
                     Next Question
+                </Button>
+
+                <Button
+                variant='contained'
+                color='error'
+                size='large'
+                onClick={handleQuit}>
+                    Quit
+                </Button>
+
+                <Button
+                variant='contained'
+                color='success'
+                size='large'
+                onClick={handleSubmit}>
+                   Submit Quiz
                 </Button>
             </div>
         </div>
