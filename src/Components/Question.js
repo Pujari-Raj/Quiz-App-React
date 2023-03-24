@@ -22,23 +22,19 @@ const Question = ({
     const [show, setShow] = useState(false); // state for modal
     const [selected, setSelected] = useState(); //for selectedAnswer
 
-    const[notselected, setNotSelected] = useState();
-    const[answerselected, setAnswerselected] = useState({});
+    //state for answer notselected & useranswer array
+    const[notselected, setNotSelected] = useState(false);
+    // creating blank array for useranswer 
+    const[useranswer, setUserAnswer] = useState(Array(noofquestions).fill(null));
 
     // if user doesn't select any option , then throw error
     const [error, setError] = useState(false);  // state for error
-    const navigate = useNavigate(); //state for navigating
+    const navigate = useNavigate(); // object for navigating user
 
     // console.log(noofquestions);
 
-    //function for changing buttons of colors on basis of answer& conditions
+    //function for changing buttons of colors on basis of answer & conditions
     const handleSelect = (i) => {  
-        //
-        // let data = questions;
-        // data[currQues] = { ...data[currQues], selected:i };
-        // setQuestions(data);
-        // console.log(setQuestions(data));
-
         // cdtn for right answer
         if (selected === i && selected === correctanswer) {
             return "select";   
@@ -56,48 +52,59 @@ const Question = ({
     //checking the answer of question
     const handleCheck = (i) => {
         setSelected(i);
-      
+
+        //creating new array for user's answer and storing all the answers into it. 
+        const newAnswers = [...useranswer];
+        newAnswers[currQues] = i;
+        setUserAnswer(newAnswers);
+        console.log(useranswer);
+
+        //prev
         if (i === correctanswer) {
             setScore(score+1);
         }
-        // setError(false);
     };
 
     // function for submit btn(submitting quiz)
     const handleSubmit = () => {
         navigate('/result');
+        // console.log(useranswer);
     }
 
     // function for Previous Question
-    const handlePrevious= () => {
-        if(notselected){
-            console.log('Previous called, decrementing question!!!', currQues);
-            setCurrQues(currQues-1);
+    const handlePrevious= () => {        
+        // if user clicks on previous btn
+        if (currQues>0) {
+            setCurrQues(currQues - 1);
+            setSelected(useranswer[currQues - 1]);
+
+            setNotSelected(false);
         }
     }
 
     // Function for next question button
     const handleNext = () => {
-
-        if (selected) {  
-            console.log('qstn attempted,forwarding to next qstn', currQues);
-            setCurrQues(currQues+1);
-            setSelected(true);
-           
-            setSelected(false);
+        // if user selects, & then then go to next question
+        if (selected) {
+            if (currQues < noofquestions - 1) {
+            //   console.log('qstn attempted, forwarding to next-qstn', currQues);
+              setCurrQues(currQues + 1);
+              setSelected(useranswer[currQues + 1]);
+            
+              setNotSelected(false);
+              console.log(useranswer);
+            }
         }
-        
+
+        // if user does'nt selects, & then then go to next question
         else{
-            console.log('qstn not-attempted, forwarding to next-qstn', currQues);
+            // console.log('qstn not-attempted, forwarding to next-qstn', currQues);
             setCurrQues(currQues+1);
-            // setSelected(false);
-            setSelected();
 
             setNotSelected(true);
+            console.log(useranswer);
         }
-        // else{
-        //     setError('Please Select Option Before Going to Next Question');
-        // }
+
     };
 
     // Displaying Modal on clicking of quit btn
@@ -127,8 +134,6 @@ const Question = ({
           <Modal.Title>Are You Sure</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* I will not close if you click outside me. Don't even try to press
-          escape key. */}
            You Want To Quit The Quiz
         </Modal.Body>
         <Modal.Footer>
@@ -138,7 +143,7 @@ const Question = ({
           <Button variant="outlined" onClick={handleModal}>No</Button>
         </Modal.Footer>
       </Modal>
-        {/* <h1>Question: {currQues + 1} / {noofquestions}</h1> */}
+
 
         <div className='singleQuestion'>
             <div>

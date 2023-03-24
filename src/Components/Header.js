@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className='header'>
         <Link to='/' className='header_title'>
-            Wizard Quiz App
+          Quiz Wizard 
         </Link>
         <hr className='divider'/>
     </div>
