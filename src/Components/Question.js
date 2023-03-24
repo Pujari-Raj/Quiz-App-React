@@ -20,6 +20,8 @@ const Question = ({
 
     //states
     const [show, setShow] = useState(false); // state for modal
+    const [submitshow, setSubmitShow] = useState(false); // state for modal
+    
     const [selected, setSelected] = useState(); //for selectedAnswer
 
     //state for answer notselected & useranswer array
@@ -67,7 +69,8 @@ const Question = ({
 
     // function for submit btn(submitting quiz)
     const handleSubmit = () => {
-        navigate('/result');
+        setSubmitShow(true);
+        // navigate('/result');
         // console.log(useranswer);
     }
 
@@ -117,6 +120,16 @@ const Question = ({
         navigate('/');
     }
 
+    //
+    const handleSubmitModal = () =>{
+        navigate('/result');
+    }
+
+    //
+    const cloeSubmitModal = () =>{
+        setSubmitShow(false);
+    }
+
     //closing modal
     const handleModal = () => {
         setShow(false);
@@ -124,7 +137,7 @@ const Question = ({
 
   return (
     <div className="question">
-        <Modal
+      <Modal
         show={show}
         onHide={handleClose}
         backdrop="static"
@@ -144,6 +157,26 @@ const Question = ({
         </Modal.Footer>
       </Modal>
 
+        {/* submit quiz modal  */}
+      <Modal
+        show={submitshow}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header>
+          <Modal.Title>Are You Sure</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+           You Want To Submit The Quiz
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="contained" onClick={handleSubmitModal} style={{marginRight: 20}}>
+            Yes
+          </Button>
+          <Button variant="outlined" onClick={cloeSubmitModal}>No</Button>
+        </Modal.Footer>
+      </Modal>
 
         <div className='singleQuestion'>
             <div>
