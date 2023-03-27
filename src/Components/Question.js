@@ -29,7 +29,7 @@ const Question = ({
     // creating blank array for useranswer 
     const[useranswer, setUserAnswer] = useState(Array(noofquestions).fill(null));
     
-    //
+    //states for attempted & notattempted question
     const [attemptedquestion, setAttemptedQuestion] = useState(0);
     const [notattemptedquestion, setNotAttemptedQuestion] = useState(0);
     // const [attemptedScore, setattemptedScore] = useState();
@@ -103,9 +103,8 @@ const Question = ({
               
             //   console.log(useranswer);
             }
-            //
+            //for attempted qstn
             setAttemptedQuestion(attemptedquestion+1);
-
             console.log("attempted- "+attemptedquestion);    
         }
 
@@ -116,7 +115,7 @@ const Question = ({
             
             setNotSelected(true);
 
-            //
+            //for !attempted qstn
             setNotAttemptedQuestion(notattemptedquestion+1);
             console.log("notattempted- "+notattemptedquestion);
             // console.log(useranswer);
