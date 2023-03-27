@@ -20,7 +20,7 @@ const Question = ({
 
     //states
     const [show, setShow] = useState(false); // state for modal
-    const [submitshow, setSubmitShow] = useState(false); // state for modal
+    const [submitshow, setSubmitShow] = useState(false); // state for submit modal
     
     const [selected, setSelected] = useState(); //for selectedAnswer
 
@@ -28,6 +28,11 @@ const Question = ({
     const[notselected, setNotSelected] = useState(false);
     // creating blank array for useranswer 
     const[useranswer, setUserAnswer] = useState(Array(noofquestions).fill(null));
+    
+    //
+    const [attemptedquestion, setAttemptedQuestion] = useState(0);
+    const [notattemptedquestion, setNotAttemptedQuestion] = useState(0);
+    // const [attemptedScore, setattemptedScore] = useState();
 
     // if user doesn't select any option , then throw error
     const [error, setError] = useState(false);  // state for error
@@ -93,19 +98,28 @@ const Question = ({
             //   console.log('qstn attempted, forwarding to next-qstn', currQues);
               setCurrQues(currQues + 1);
               setSelected(useranswer[currQues + 1]);
-            
+              
               setNotSelected(false);
-              console.log(useranswer);
+              
+            //   console.log(useranswer);
             }
+            //
+            setAttemptedQuestion(attemptedquestion+1);
+
+            console.log("attempted- "+attemptedquestion);    
         }
 
         // if user does'nt selects, & then then go to next question
         else{
             // console.log('qstn not-attempted, forwarding to next-qstn', currQues);
             setCurrQues(currQues+1);
-
+            
             setNotSelected(true);
-            console.log(useranswer);
+
+            //
+            setNotAttemptedQuestion(notattemptedquestion+1);
+            console.log("notattempted- "+notattemptedquestion);
+            // console.log(useranswer);
         }
 
     };
@@ -120,19 +134,26 @@ const Question = ({
         navigate('/');
     }
 
-    //
-    const handleSubmitModal = () =>{
-        navigate('/result');
-    }
-
-    //
-    const cloeSubmitModal = () =>{
-        setSubmitShow(false);
-    }
-
     //closing modal
     const handleModal = () => {
         setShow(false);
+    }
+    
+    // directing user to the result page on submiting quiz
+    const handleSubmitModal = () =>{
+        console.log('attempted-'+attemptedquestion);
+        console.log('not attempted'+notattemptedquestion);
+        console.log(useranswer);
+        
+        // var attemptedqstn
+        // useranswer.filter()
+
+        navigate('/result');
+    }
+
+    // closing submit modal
+    const cloeSubmitModal = () =>{
+        setSubmitShow(false);
     }
 
   return (
@@ -203,7 +224,7 @@ const Question = ({
             <div className='controls'>
                 <Button
                 variant='contained'
-                color='primary'
+                color='secondary'
                 size='large'
                 disabled={currQues===0}
                 onClick={handlePrevious}>

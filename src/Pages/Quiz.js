@@ -14,7 +14,7 @@ const Quiz = ({name,
   const[currQues, setCurrQues] = useState(0);
 
   useEffect(() => {
-    console.log(questions);
+    // console.log(questions);
 
     // Taking the correct & incorrect answers of questions
     setOptions(questions && handleShuffle([
