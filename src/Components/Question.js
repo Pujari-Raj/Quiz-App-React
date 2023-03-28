@@ -135,22 +135,22 @@ const Question = ({
     // directing user to the result page on submiting quiz
     const handleSubmitModal = () =>{
 
-      //
+      //finding total no.of attempted & !attempted qstn
       const notattemptedqstn = useranswer.filter(answer => answer === null).length;
       const attemptedqstn = useranswer.filter(selectedanswer => typeof selectedanswer === 'string').length;
       
       console.log(`You have not answered ${notattemptedqstn} questions, You have answered ${attemptedqstn} questions`);
 
+      // setting total number of attempted & !attempted qstn in state
       setAttemptedQuestion(attemptedqstn);
       setNotAttemptedQuestion(notattemptedqstn);
 
-      console.log('attempted-'+attemptedquestion);
-      console.log('not attempted'+notattemptedquestion);
-      console.log(useranswer);
+      // console.log('attempted-'+attemptedquestion);
+      // console.log('not attempted'+notattemptedquestion);
+      // console.log(useranswer);
       
-      // var attemptedqstn
-      // useranswer.filter()
-
+      // navigating user to result page on submit quiz btn with 
+      // noofattemptedqstn, noofnotattemptedqstn state
       navigate('/result', {state: {noofattemptedqstn: attemptedqstn,noofnotattemptedqstn  :notattemptedqstn}});
     }
 

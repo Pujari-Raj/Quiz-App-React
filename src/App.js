@@ -60,8 +60,8 @@ function App() {
           ></Route>
 
         </Routes>
-      </div>
       <Footer />
+      </div>
     </BrowserRouter>
   );
 }
