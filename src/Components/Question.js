@@ -102,10 +102,7 @@ const Question = ({
               setNotSelected(false);
               
             //   console.log(useranswer);
-            }
-            //for attempted qstn
-            setAttemptedQuestion(attemptedquestion+1);
-            console.log("attempted- "+attemptedquestion);    
+            }   
         }
 
         // if user does'nt selects, & then then go to next question
@@ -115,9 +112,6 @@ const Question = ({
             
             setNotSelected(true);
 
-            //for !attempted qstn
-            setNotAttemptedQuestion(notattemptedquestion+1);
-            console.log("notattempted- "+notattemptedquestion);
             // console.log(useranswer);
         }
 
@@ -140,14 +134,24 @@ const Question = ({
     
     // directing user to the result page on submiting quiz
     const handleSubmitModal = () =>{
-        console.log('attempted-'+attemptedquestion);
-        console.log('not attempted'+notattemptedquestion);
-        console.log(useranswer);
-        
-        // var attemptedqstn
-        // useranswer.filter()
 
-        navigate('/result');
+      //
+      const notattemptedqstn = useranswer.filter(answer => answer === null).length;
+      const attemptedqstn = useranswer.filter(selectedanswer => typeof selectedanswer === 'string').length;
+      
+      console.log(`You have not answered ${notattemptedqstn} questions, You have answered ${attemptedqstn} questions`);
+
+      setAttemptedQuestion(attemptedqstn);
+      setNotAttemptedQuestion(notattemptedqstn);
+
+      console.log('attempted-'+attemptedquestion);
+      console.log('not attempted'+notattemptedquestion);
+      console.log(useranswer);
+      
+      // var attemptedqstn
+      // useranswer.filter()
+
+      navigate('/result', {state: {noofattemptedqstn: attemptedqstn,noofnotattemptedqstn  :notattemptedqstn}});
     }
 
     // closing submit modal
