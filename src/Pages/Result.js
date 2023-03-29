@@ -19,8 +19,6 @@ const Result = ({name, score}) => {
       <span className='result_qstn'>Total Number Of Attempted Question: <span className='qstn_bold'>{location.state.noofattemptedqstn}</span> </span>
       <span className='result_qstn'>Total Number Of Not Attempted Question: <span className='qstn_bold'>{location.state.noofnotattemptedqstn}</span> </span> 
       <span className='result_title'>Your Score:<span className='qstn_bold'> {score} / 10 </span> </span> 
-      {/* <p>{location.state.noofattemptedqstn}</p>
-      <p>{location.state.noofnotattemptedqstn}</p> */}
           
       <Button
       variant='outlined'
