@@ -2,7 +2,8 @@ import { CircularProgress} from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Question from '../Components/Question';
 
-const Quiz = ({name, 
+const Quiz = ({
+  name, 
   questions, 
   score, 
   setScore, 
@@ -10,13 +11,14 @@ const Quiz = ({name,
   noofquestions,
   setNoofquestions}) => {
 
+  // state for options & currQues
   const[options, setOptions] = useState();
   const[currQues, setCurrQues] = useState(0);
 
   useEffect(() => {
     // console.log(questions);
 
-    // Taking the correct & incorrect answers of questions
+    // Taking the correct & incorrect answers of questions and shuffling it
     setOptions(questions && handleShuffle([
       questions[currQues]?.correct_answer,
       ...questions[currQues]?.incorrect_answers
@@ -36,6 +38,7 @@ const Quiz = ({name,
     <div className='quiz'>
       <span className='quiz_subtitle'>Welcome, {name}</span>
       
+      {/* using conditional rendering  */}
       {questions?(
        <>
         <div className='quizInfo'>

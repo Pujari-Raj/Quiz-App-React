@@ -14,6 +14,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [noofquestions, setNoofquestions] = useState(10);
 
+  // functions to fetch questions(10) from Opentdb (API)
   const fetchQuestions = async (category = "", difficulty = "") => {
     const { data } = await axios.get(
       `https://opentdb.com/api.php?amount=10${
@@ -22,10 +23,12 @@ function App() {
     );
 
     console.log(data);
+    //settingquestion answer in  data object
     setQuestions(data.results);
   };
 
   return (
+    // Routes for all the pages
     <BrowserRouter>
       <div className="App">
         <Header />

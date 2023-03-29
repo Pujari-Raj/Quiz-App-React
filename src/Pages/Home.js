@@ -7,10 +7,11 @@ import ErrorMessage from "../Components/ErrorMessage";
 
 const Home = ({ name, setName, fetchQuestions}) => {
   //states
-  const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [error, setError] = useState(false);
+  const [category, setCategory] = useState(""); // state for category
+  const [difficulty, setDifficulty] = useState(""); // state for difficulty-level of quiz
+  const [error, setError] = useState(false); // state for showing error while setting quiz Details
 
+  // object of navigate
   const navigate = useNavigate();
 
   // checking if all the values has been entered in input fields
@@ -38,7 +39,7 @@ const Home = ({ name, setName, fetchQuestions}) => {
             label="Enter Your Name"
             style={{ marginBottom: 30 }}
             variant="outlined"
-            onChange={(e) => setName(e.target.value)}/>
+            onChange={(e) => setName(e.target.value)} autoComplete='off'/>
 
           <TextField
             select
@@ -79,6 +80,7 @@ const Home = ({ name, setName, fetchQuestions}) => {
         </div>
       </div>
 
+      {/* Image Banner */}
       <img src="./home_banner.svg" alt="banner_img" className="banner" />
       
     </div>

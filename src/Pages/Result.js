@@ -5,8 +5,8 @@ import { Button } from '@mui/material';
 
 const Result = ({name, score}) => {
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate = useNavigate(); // object of navigate
+  const location = useLocation(); // object of location
 
   useEffect(() => {
     if (!name) {
@@ -26,7 +26,7 @@ const Result = ({name, score}) => {
       size='large'
       style={{alignSelf: "center", marginTop: 20}}
       href='/'>
-        Go To HomePage
+        Take Quiz Again
       </Button>
     </div>
   )
