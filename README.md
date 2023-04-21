@@ -1,9 +1,10 @@
 ## Quiz-Wizard App Build In React Js
 
 TechStack
-- ReactJs
+- HTML
 - CSS
--Material UI
+- ReactJs
+- Material UI
 
 Click on the Below Given Link to get the Preview Of The App
 
