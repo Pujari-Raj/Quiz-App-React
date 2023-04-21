@@ -21,4 +21,4 @@ Learnings from this projects:-
 * How to Use ReactStrap.
 * How to Use API , I used opendtb API
 * How to use axios for fetching data from API.
-* What is Material-UI and how we can use it to improve UI of our app.
+* What is Material-UI and how we can use it to improve the UI of our app.
