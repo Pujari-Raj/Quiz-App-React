@@ -15,6 +15,10 @@ const Quiz = ({
   const[options, setOptions] = useState();
   const[currQues, setCurrQues] = useState(0);
 
+  /* useEffect is used to re-render the component, in this project we're re-rendering 
+    the question for user when the next or previous btn is clicked , if we don't 
+    use useEffect then we can't re-render data and if we don't give dependency array 
+    then it go in infinte loop,if give blank dependency array  then options of questions will remain same*/
   useEffect(() => {
     // console.log(questions);
 
